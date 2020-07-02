@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Scrapbook</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Scrapbook</a>
+    </nav>
+
+    <main role="main">
+      <div class="jumbotron">
+        <div class="container d-flex flex-column align-items-center">
+          <h3 class="font-weight-bold">
+            Mural de Recados - Deixe sua mensagem
+          </h3>
+
+          <div id="inputField" class="form-group col-md-6">
+            <label class="font-weight-bold" for="titleInput">Título:</label>
+            <input
+              type="text"
+              id="titleInput"
+              class="form-control"
+              placeholder="Digite o título da mensagem"
+            />
+
+            <label class="font-weight-bold" for="messageField">Mensagem:</label>
+            <textarea
+              id="messageField"
+              class="form-control"
+              cols="30"
+              rows="5"
+            ></textarea>
+
+            <button class="btn btn-dark mt-2 w-100 font-weight-bold">
+              Adicionar
+            </button>
+          </div>
+
+          <div
+            id="scrapsField"
+            class="d-flex justify-content-center flex-wrap mt-5 w-100"
+          >
+            <div class="message-cards card text-white bg-dark m-2 col-3">
+              <div class="card-header font-weight-bold">Relatórios</div>
+              <div class="card-body">
+                <p class="card-text">
+                  Os relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entregues
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
