@@ -3,7 +3,12 @@ textarea {
 }
 
 #scrapsField .message-cards {
-  height: 200px;
+  height: 250px;
+  width: 250px;
+}
+
+#scrapsField .message-cards .card-text {
+  height: 100px;
   overflow-y: scroll;
 }
 

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrapbook</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -10,7 +11,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>Scrapbook</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -24,34 +24,66 @@
             Mural de Recados - Deixe sua mensagem
           </h3>
 
-          <div id="inputField" class="form-group col-md-6">
-            <label class="font-weight-bold" for="titleInput">Título:</label>
+          <div id="inputField" class="col-md-6">
+            <label for="messageTitle" class="font-weight-bold">Título:</label>
             <input
               type="text"
-              id="titleInput"
               class="form-control"
+              id="messageTitle"
               placeholder="Digite o título da mensagem"
             />
 
-            <label class="font-weight-bold" for="messageField">Mensagem:</label>
+            <label for="messageBody" class="font-weight-bold">Mensagem:</label>
             <textarea
-              id="messageField"
+              id="messageBody"
               class="form-control"
               cols="30"
               rows="5"
             ></textarea>
-
-            <button class="btn btn-dark mt-2 w-100 font-weight-bold">
+            <button
+              id="addButton"
+              type="button"
+              class="btn btn-dark mt-2 w-100 mt-3 font-weight-bold"
+            >
               Adicionar
             </button>
           </div>
 
           <div
             id="scrapsField"
-            class="d-flex justify-content-center flex-wrap mt-5 w-100"
-          ></div>
+            class="d-flex flex-wrap justify-content-center mt-5 w-100"
+          >
+            <div class="message-cards card text-white bg-dark m-2 col-3">
+              <div class="card-header font-weight-bold">Relatórios</div>
+              <div class="card-body">
+                <p class="card-text">
+                  Os relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entreguesOs relatórios foram entreguesOs
+                  relatórios foram entregues
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
+
+    <script src="index.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
