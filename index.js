@@ -30,6 +30,12 @@ function addNewScrap() {
   renderScraps();
 }
 
+function deleteScrap(position) {
+  scraps.splice(position, 1);
+
+  renderScraps();
+}
+
 function createScrapCard(title, message, position) {
   return `
   <div class="message-cards card text-white bg-dark m-2 col-3">
