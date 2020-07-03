@@ -9,7 +9,12 @@ function renderScraps() {
   scrapsField.innerHTML = "";
 
   for (const scrap of scraps) {
-    scrapsField.innerHTML += createScrapCard(scrap.title, scrap.message);
+    let position = scraps.indexOf(scrap);
+    scrapsField.innerHTML += createScrapCard(
+      scrap.title,
+      scrap.message,
+      position
+    );
   }
 }
 
@@ -25,7 +30,7 @@ function addNewScrap() {
   renderScraps();
 }
 
-function createScrapCard(title, message) {
+function createScrapCard(title, message, position) {
   return `
   <div class="message-cards card text-white bg-dark m-2 col-3">
     <div class="card-header font-weight-bold">${title}</div>
