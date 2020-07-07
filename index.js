@@ -53,5 +53,9 @@ function createScrapCard(title, message, position) {
   `;
 }
 
+function openEditModal() {
+  $("#editModal").modal("toggle");
+}
+
 renderScraps();
 addScrapBtn.onclick = addNewScrap;
