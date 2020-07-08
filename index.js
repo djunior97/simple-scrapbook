@@ -4,6 +4,7 @@ let messageInput = document.getElementById("messageBody");
 let editMessageInput = document.getElementById("editMessageBody");
 let addScrapBtn = document.getElementById("addButton");
 let scrapsField = document.getElementById("scrapsField");
+let btnSaveEdit = document.getElementById("saveEdit");
 
 let scraps = [];
 
@@ -57,6 +58,16 @@ function createScrapCard(title, message, position) {
 
 function openEditModal(position) {
   $("#editModal").modal("toggle");
+
+  editTitleInput.value = scraps[position].title;
+  editMessageInput.value = scraps[position].message;
+
+  btnSaveEdit.setAttribute("onclick", `saveChanges(${position})`);
+}
+
+function saveChanges(position) {
+  let title = editTitleInput.value;
+  let message = editMessageInput.value;
 }
 
 renderScraps();
