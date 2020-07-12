@@ -6,7 +6,7 @@ let addScrapBtn = document.getElementById("addButton");
 let scrapsField = document.getElementById("scrapsField");
 let btnSaveEdit = document.getElementById("saveEdit");
 
-let scraps = [];
+let scraps = JSON.parse(localStorage.getItem("scraps")) || [];
 
 function renderScraps() {
   scrapsField.innerHTML = "";
@@ -31,12 +31,14 @@ function addNewScrap() {
   scraps.push({ title, message });
 
   renderScraps();
+  saveToLocalStorage();
 }
 
 function deleteScrap(position) {
   scraps.splice(position, 1);
 
   renderScraps();
+  saveToLocalStorage();
 }
 
 function createScrapCard(title, message, position) {
@@ -68,6 +70,15 @@ function openEditModal(position) {
 function saveChanges(position) {
   let title = editTitleInput.value;
   let message = editMessageInput.value;
+
+  scraps[position] = { title, message };
+  renderScraps();
+  $("#editModal").modal("hide");
+  saveToLocalStorage();
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("scraps", JSON.stringify(scraps));
 }
 
 renderScraps();
