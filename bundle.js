@@ -21,13 +21,22 @@ var TaskList = /*#__PURE__*/function () {
     this.addButton = document.getElementById("addButton");
     this.scrapsField = document.getElementById("scrapsField");
     this.scraps = [];
-    this.registerEvents();
+    this.setAddButtonEvent();
   }
 
   _createClass(TaskList, [{
-    key: "registerEvents",
-    value: function registerEvents() {
-      this.addButton.onclick = this.addNewScrap();
+    key: "setAddButtonEvent",
+    value: function setAddButtonEvent() {
+      var _this = this;
+
+      this.addButton.onclick = function () {
+        return _this.addNewScrap();
+      };
+    }
+  }, {
+    key: "setButtonEvents",
+    value: function setButtonEvents() {
+      console.log(document.querySelectorAll(".delete-button"));
     }
   }, {
     key: "renderScraps",
@@ -40,13 +49,16 @@ var TaskList = /*#__PURE__*/function () {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var scrap = _step.value;
-          this.scrapsField.innerHTML += this.createScrapCard(scrap.title, scrap.message);
+          var position = scraps.indexOf(scrap);
+          this.scrapsField.innerHTML += this.createScrapCard(scrap.title, scrap.message, position);
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
+
+      this.setButtonEvents();
     }
   }, {
     key: "addNewScrap",
@@ -62,9 +74,15 @@ var TaskList = /*#__PURE__*/function () {
       this.renderScraps();
     }
   }, {
+    key: "deleteScrap",
+    value: function deleteScrap(position) {
+      this.scraps.splice(position, 1);
+      this.renderScraps();
+    }
+  }, {
     key: "createScrapCard",
     value: function createScrapCard(title, message) {
-      return "\n      <div class=\"message-cards card text-white bg-dark m-2 col-3\">\n        <div class=\"card-header font-weight-bold\">".concat(title, "</div>\n        <div class=\"card-body\">\n          <p class=\"card-text\">\n            ").concat(message, "\n          </p>\n        </div>\n        <div class=\"w-100 d-flex justify-content-end pr-2 pb-2\">\n          <button class=\"btn btn-danger mr-1\">Deletar</button>\n          <button class=\"btn btn-info\">Editar</button>\n        </div>\n      </div>\n    ");
+      return "\n      <div class=\"message-cards card text-white bg-dark m-2 col-3\">\n        <div class=\"card-header font-weight-bold\">".concat(title, "</div>\n        <div class=\"card-body\">\n          <p class=\"card-text\">\n            ").concat(message, "\n          </p>\n        </div>\n        <div class=\"w-100 d-flex justify-content-end pr-2 pb-2\">\n          <button class=\"btn btn-danger mr-1 delete-button\">Deletar</button>\n          <button class=\"btn btn-info\">Editar</button>\n        </div>\n      </div>\n    ");
     }
   }]);
 
