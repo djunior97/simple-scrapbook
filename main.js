@@ -10,24 +10,27 @@ class TaskList {
     this.setAddButtonEvent();
   }
 
+  generateScrapId() {
+    return this.scraps.length + 1;
+  }
+
   setAddButtonEvent() {
     this.addButton.onclick = () => this.addNewScrap();
   }
 
   setButtonEvents() {
-    console.log(document.querySelectorAll(".delete-button"));
+    document.querySelectorAll(".delete-button").forEach((item) => {
+      item.onclick = (event) => this.deleteScraps(event);
+    });
   }
 
   renderScraps() {
     this.scrapsField.innerHTML = "";
 
     for (const scrap of this.scraps) {
-      let position = scraps.indexOf(scrap);
-      this.scrapsField.innerHTML += this.createScrapCard(
-        scrap.title,
-        scrap.message,
-        position
-      );
+      const cardHtml = this.createScrapCard(scrap.title, scrap.message);
+
+      this.insertHtml(cardHtml);
     }
 
     this.setButtonEvents();
@@ -40,15 +43,21 @@ class TaskList {
     this.titleInput.value = "";
     this.messageInput.value = "";
 
-    this.scraps.push({ title, message });
+    const id = this.generateScrapId();
+
+    this.scraps.push({ id, title, message });
 
     this.renderScraps();
   }
 
-  deleteScrap(position) {
-    this.scraps.splice(position, 1);
+  deleteScraps(event) {
+    event.path[2].remove();
 
-    this.renderScraps();
+    console.log(event);
+  }
+
+  insertHtml(html) {
+    this.scrapsField += html;
   }
 
   createScrapCard(title, message) {
