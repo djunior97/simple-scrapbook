@@ -28,11 +28,16 @@ class TaskList {
     this.scrapsField.innerHTML = "";
 
     for (const scrap of this.scraps) {
-      const cardHtml = this.createScrapCard(scrap.title, scrap.message);
-
-      this.insertHtml(cardHtml);
+      this.generateScrap(scrap.id, scrap.title, scrap.message);
     }
 
+    this.setButtonEvents();
+  }
+
+  generateScrap(id, title, message) {
+    const cardHtml = this.createScrapCard(id, title, message);
+
+    this.insertHtml(cardHtml);
     this.setButtonEvents();
   }
 
@@ -47,22 +52,28 @@ class TaskList {
 
     this.scraps.push({ id, title, message });
 
-    this.renderScraps();
+    this.generateScrap(id, title, message);
   }
 
   deleteScraps(event) {
     event.path[2].remove();
 
-    console.log(event);
+    const scrapId = event.path[2].getAttribute("id-scrap");
+
+    const scrapIndex = this.scraps.findIndex((scrap) => {
+      return scrap.id == scrapId;
+    });
+
+    this.scraps.splice(scrapIndex, 1);
   }
 
   insertHtml(html) {
-    this.scrapsField += html;
+    this.scrapsField.innerHTML += html;
   }
 
-  createScrapCard(title, message) {
+  createScrapCard(id, title, message) {
     return `
-      <div class="message-cards card text-white bg-dark m-2 col-3">
+      <div class="message-cards card text-white bg-dark m-2 col-3" id-scrap="${id}">
         <div class="card-header font-weight-bold">${title}</div>
         <div class="card-body">
           <p class="card-text">
