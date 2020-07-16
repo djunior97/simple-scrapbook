@@ -68,6 +68,10 @@ function openEditModal(position) {
 function saveChanges(position) {
   let title = editTitleInput.value;
   let message = editMessageInput.value;
+
+  scraps[position] = { title, message };
+  renderScraps();
+  $("#editModal").modal("hide");
 }
 
 renderScraps();

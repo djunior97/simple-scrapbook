@@ -90,7 +90,16 @@ class TaskList {
     this.editTitleInput.value = this.scraps[scrapIndex].title;
     this.editMessageInput.value = this.scraps[scrapIndex].message;
 
-    // btnSaveEdit.setAttribute("onclick", `saveChanges(${position})`);
+    this.btnSaveEdit.onclick = () => this.saveChanges(scrapIndex);
+  }
+
+  saveChanges(scrapIndex) {
+    let title = this.editTitleInput.value;
+    let message = this.editMessageInput.value;
+
+    this.scraps[scrapIndex] = { title, message };
+    this.renderScraps();
+    $("#editModal").modal("hide");
   }
 
   createScrapCard(id, title, message) {

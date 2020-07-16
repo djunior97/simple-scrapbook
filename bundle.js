@@ -118,13 +118,31 @@ var TaskList = /*#__PURE__*/function () {
   }, {
     key: "openEditModal",
     value: function openEditModal(event) {
+      var _this3 = this;
+
       $("#editModal").modal("toggle");
       var scrapId = event.path[2].getAttribute("id-scrap");
       var scrapIndex = this.scraps.findIndex(function (scrap) {
         return scrap.id == scrapId;
       });
       this.editTitleInput.value = this.scraps[scrapIndex].title;
-      this.editMessageInput.value = this.scraps[scrapIndex].message; // btnSaveEdit.setAttribute("onclick", `saveChanges(${position})`);
+      this.editMessageInput.value = this.scraps[scrapIndex].message;
+
+      this.btnSaveEdit.onclick = function () {
+        return _this3.saveChanges(scrapIndex);
+      };
+    }
+  }, {
+    key: "saveChanges",
+    value: function saveChanges(scrapIndex) {
+      var title = this.editTitleInput.value;
+      var message = this.editMessageInput.value;
+      this.scraps[scrapIndex] = {
+        title: title,
+        message: message
+      };
+      this.renderScraps();
+      $("#editModal").modal("hide");
     }
   }, {
     key: "createScrapCard",
